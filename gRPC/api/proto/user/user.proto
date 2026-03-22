@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "gRPC/api/proto/user";
+
+service UserService {
+    rpc CreateUser(CreateUserRequest) returns (UserResponse);
+    rpc GetUser(GetUserRequest) returns (UserResponse);
+    rpc GetAllUsers(GetAllUsersRequest) returns (GetAllUsersResponse);
+    rpc UpdateUser(UpdateUserRequest) returns (UserResponse);
+    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+}
+
+message CreateUserRequest {
+    string 
+}
