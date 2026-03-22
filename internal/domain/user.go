@@ -32,8 +32,8 @@ type UserResponse struct {
 }
 
 // Конвертация User в UserResponse
-func (u *User) ToResponse() *UserResponse {
-	return &UserResponse{
+func (u User) ToResponse() UserResponse {
+	return UserResponse{
 		ID:        u.ID,
 		Email:     u.Email,
 		Name:      u.Name,
