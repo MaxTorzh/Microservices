@@ -13,5 +13,36 @@ service UserService {
 }
 
 message CreateUserRequest {
-    string 
+    string email = 1;
+    string name = 2;
+}
+
+message GetUserRequest {
+    string id = 1;
+}
+
+message GetAllUsersRequest {}
+
+message GetAllUsersResponse {
+    repeated UserResponse users = 1;
+}
+
+message UpdateUserRequest {
+    string id = 1;
+    string email = 2;
+    string name = 3;
+}
+
+message DeleteUserRequest {
+    string id = 1;
+}
+
+message DeleteUserResponse {}
+
+message UserResponse {
+    string id = 1;
+    string email = 2;
+    string name = 3;
+    string created_at = 4;
+    string updated_at = 5;
 }

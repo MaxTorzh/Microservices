@@ -1,0 +1,15 @@
+services:
+  user-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: user-service
+    ports:
+      - "8080:8080" # HTTP
+      - "9090:9090" # gRPC
+    environment:
+      - APP_ENV=development
+      - HTTP_PORT=8080
+      - GRPC_PORT=9090
+      - LOG_LEVEL=debug
+    restart: unless-stopped
