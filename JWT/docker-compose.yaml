@@ -1,0 +1,14 @@
+services:
+  user-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: user-service
+    ports:
+      - "8080:8080"
+      - "9090:9090"
+    environment:
+      - HTTP_PORT=8080
+      - GRPC_PORT=9090
+      - JWT_SECRET=your-secret-key-change-in-production
+    restart: unless-stopped

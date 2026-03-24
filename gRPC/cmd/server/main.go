@@ -12,7 +12,7 @@ import (
 
 	pb "gRPC/api/proto/user"
 	grpcHandler "gRPC/internal/handler/grpc"
-	httphandler "gRPC/internal/handler/http_handler"
+	httpHandler "gRPC/internal/handler/http_handler"
 	"gRPC/internal/repository/memory"
 	"gRPC/internal/service"
 
@@ -34,7 +34,7 @@ func main() {
 	repo := memory.NewRepository()
 	userService := service.NewUserService(repo)
 
-	httpHandler := httphandler.NewHandler(userService)
+	httpHandler := httpHandler.NewHandler(userService)
 	grpcHandler := grpcHandler.NewUserGrpcHandler(userService)
 
 	// HTTP Server
