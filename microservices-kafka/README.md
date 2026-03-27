@@ -217,11 +217,11 @@ curl http://localhost:8081/stats
 }
 ```
 
-# Логирование
+## Логирование
 
 ### Оба сервиса используют структурированное логирование в формате JSON. Пример логов:
 
-## User Service:
+### User Service:
 
 ```json
 {
@@ -233,7 +233,7 @@ curl http://localhost:8081/stats
 }
 ```
 
-## Notification Service:
+### Notification Service:
 
 ```json
 {
@@ -247,11 +247,11 @@ curl http://localhost:8081/stats
 }
 ```
 
-# Конфигурация
+## Конфигурация
 
 ### Переменные окружения
 
-## User Service (.env)
+### User Service (.env)
 
 ```env
 # Server
@@ -282,7 +282,7 @@ KAFKA_TOPIC=user-events
 KAFKA_GROUP_ID=notification-group
 ```
 
-# Тестирование
+## Тестирование
 
 ### Полный тестовый сценарий
 
@@ -307,7 +307,7 @@ curl http://localhost:8081/stats
 curl -X DELETE http://localhost:8080/users/{id}
 ```
 
-# Проверка Kafka сообщений
+## Проверка Kafka сообщений
 
 ```bash
 # Просмотр сообщений в топике
@@ -317,7 +317,7 @@ docker exec kafka kafka-console-consumer \
   --from-beginning
 ```
 
-# Проверка PostgreSQL
+## Проверка PostgreSQL
 
 ```bash
 # Подключение к БД
@@ -333,7 +333,7 @@ SELECT * FROM users;
 \q
 ```
 
-# Мониторинг
+## Мониторинг
 
 ### Health Checks
 
@@ -347,7 +347,7 @@ curl http://localhost:8081/health
 # {"status":"healthy","service":"notification-service"}
 ```
 
-# Метрики
+## Метрики
 
 ```bash
 # Получение метрик
