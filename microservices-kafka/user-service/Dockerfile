@@ -1,0 +1,32 @@
+FROM golang:1.26-alpine AS builder
+
+WORKDIR /app
+
+RUN apk update && apk upgrade && \
+    apk add --no-cache --update ca-certificates
+
+RUN apk add --no-cache git || \
+    (sleep 5 && apk add --no-cache git) || \
+    (sleep 10 && apk add --no-cache git)
+
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY . .
+
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o user-service ./cmd/server
+
+FROM alpine:latest
+
+RUN apk --no-cache add ca-certificates wget
+
+WORKDIR /root/
+
+COPY --from=builder /app/user-service .
+
+EXPOSE 8080
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8080/health || exit 1
+
+CMD ["./user-service"]
