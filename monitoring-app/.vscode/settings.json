@@ -1,0 +1,9 @@
+{
+  "yaml.schemas": {},
+  "yaml.validate": false,
+  "files.associations": {
+    "*.yaml": "yaml",
+    "prometheus.yaml": "yaml",
+    "*.yml": "yaml"
+  }
+}
